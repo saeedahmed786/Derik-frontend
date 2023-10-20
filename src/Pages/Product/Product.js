@@ -61,7 +61,7 @@ export const Product = (props) => {
                     totalQty: product?.qty,
                     supplier: product?.supplier
                 };
-                await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/cart/add-to-cart', requestData, {
+                await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/cart/add-to-cart`, requestData, {
                     headers: {
                         'authorization': 'Bearer ' + localStorage.getItem('token')
                     }
