@@ -23,7 +23,6 @@ export const ProductCart = (props) => {
   const [isQtyModalVisible, setIsQtyModalVisible] = useState(false);
   const [totalPrice, setTotalPrice] = useState('');
   const [qtyToShop, setQtyToShop] = useState('');
-  const [vat, setVat] = useState();
 
   const getCartProducts = async () => {
     setLoading(true);

@@ -1,7 +1,6 @@
 import { DeleteOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
 import { CreateMainCategories } from '../../../Components/Admin/Forms/CreateMainCategories';
 import { UpdateCategories } from '../../../Components/Admin/Forms/UpdateCategories';
 import { Layout } from '../../../Components/Layouts/Layout';
@@ -10,7 +9,7 @@ import { Error, Success } from '../../../Components/Messages/messages';
 export const GetCategories = () => {
   const [categories, setCategories] = useState([]);
   const getAllCategories = async () => {
-    await axios.get('/api/categories/get').then(res => {
+    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/categories/get`).then(res => {
       if (res.status === 200) {
         setCategories(res.data);
       } else {

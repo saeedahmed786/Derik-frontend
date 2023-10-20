@@ -14,7 +14,6 @@ export const CreateProductForm = () => {
     const [file, setFile] = useState('');
     const [description, setDescription] = useState('');
     const [categories, setCategories] = useState([]);
-    const [suppliers, setSuppliers] = useState([]);
     const [cat, setCat] = useState('');
     const [supplier, setSupplier] = useState('');
     const [loading, setLoading] = useState(false);
@@ -64,7 +63,7 @@ export const CreateProductForm = () => {
             data.append('supplier', supplier);
             data.append('category', cat);
             data.append('file', file);
-            axios.post('/api/products/create', data, {
+            axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/products/create`, data, {
                 headers: {
                     authorization: 'Bearer ' + localStorage.getItem('token')
                 }
@@ -82,20 +81,9 @@ export const CreateProductForm = () => {
 
     /****************************************** Get Requests *******************************************/
     const fetchCategories = () => {
-        axios.get('/api/categories/get').then(res => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/categories/get`).then(res => {
             if (res.status === 200) {
                 setCategories(res.data);
-            }
-            else {
-                Error(res.data.errorMessage);
-            }
-        })
-    }
-
-    const fetchSuppliers = () => {
-        axios.get('/api/suppliers').then(res => {
-            if (res.status === 200) {
-                setSuppliers(res.data);
             }
             else {
                 Error(res.data.errorMessage);
@@ -106,7 +94,6 @@ export const CreateProductForm = () => {
 
     useEffect(() => {
         fetchCategories();
-        // fetchSuppliers();
         return () => {
         }
     }, []);

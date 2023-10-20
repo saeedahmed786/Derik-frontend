@@ -35,27 +35,16 @@ export const AddVendor = (props) => {
             Error("Passwords don't match");
         } else {
             setLoading(true);
-            await axios.post('/api/users/signup', userData).then(res => {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/signup`, userData).then(res => {
                 setLoading(false);
                 if (res.status === 200) {
                     Success("Supplier added successfully");
-                } 
+                }
                 else {
                     Error(res.data.errorMessage);
                 }
             })
         }
-    };
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
-    const handleOk = () => {
-        setIsModalOpen(false);
-    };
-    const handleCancel = () => {
-        setIsModalOpen(false);
     };
 
     return (

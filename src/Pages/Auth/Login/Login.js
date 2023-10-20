@@ -26,7 +26,7 @@ export const Login = (props) => {
   const submitHandler = async () => {
     window.scrollTo(0, 0);
     setLoading(true);
-    await axios.post('/api/users/login', { email, password }).then(async (res) => {
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/login`, { email, password }).then(async (res) => {
       setLoading(false);
       if (res.status === 200) {
         setAuthentication(res.data, res.data.token);

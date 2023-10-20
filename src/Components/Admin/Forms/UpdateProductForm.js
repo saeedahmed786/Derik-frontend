@@ -102,7 +102,7 @@ export const UpdateProductForm = (props) => {
 
     /****************************************** Get Categories *******************************************/
     const fetchCategories = () => {
-        axios.get('/api/categories/get').then(res => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/categories/get`).then(res => {
             if (res.status === 200) {
                 setCategories(res.data);
             }

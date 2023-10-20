@@ -56,7 +56,7 @@ export const Payment = (props) => {
   }
 
   const transactionSuccess = async (data) => {
-    await axios.post('/api/orders/place-order', {
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/orders/place-order`, {
       placed: moment().format("dddd, MMMM Do YYYY, h:mm:ss a"),
       totalPrice: totalPrice,
       phone: user?.phone,

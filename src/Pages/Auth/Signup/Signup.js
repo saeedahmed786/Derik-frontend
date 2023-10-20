@@ -36,7 +36,7 @@ export const Signup = (props) => {
             Error("Passwords don't match");
         } else {
             setLoading(true);
-            await axios.post('/api/users/signup', userData).then(res => {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/signup`, userData).then(res => {
                 console.log(res);
                 setLoading(false);
                 if (res.status === 200) {

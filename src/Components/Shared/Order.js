@@ -34,7 +34,7 @@ export const Order = (props) => {
 
 
     const orderStatusHandler = async (orderId) => {
-        await axios.post("/api/orders/set/status", { status: orderStatus, orderId, updateTime: moment().format("dddd, MMMM Do YYYY, h:mm:ss a") }, {
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/orders/set/status`, { status: orderStatus, orderId, updateTime: moment().format("dddd, MMMM Do YYYY, h:mm:ss a") }, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token')
             }

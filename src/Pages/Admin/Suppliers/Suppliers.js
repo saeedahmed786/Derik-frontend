@@ -18,7 +18,7 @@ export const Suppliers = () => {
   }
 
   const getAllSuppliers = async () => {
-    await axios.get('/api/users/sellers', {
+    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/sellers`, {
       headers: {
         "authorization": 'Bearer ' + localStorage.getItem('token')
       }
