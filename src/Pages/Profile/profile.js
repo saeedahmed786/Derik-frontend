@@ -12,7 +12,7 @@ export const Profile = () => {
 
     const getUser = async () => {
         setLoading(true);
-        await axios.get(`/api/users/get/${isAuthenticated()._id}`).then(res => {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/get/${isAuthenticated()._id}`).then(res => {
             if (res.status === 200) {
                 setUser(res.data);
                 setLoading(false);

@@ -26,7 +26,7 @@ export const CreateSuppliers = (props) => {
     e.preventDefault();
     // setLoading(true);
     axios
-      .post(`/api/suppliers/create`, { firstName, lastName, phone, debt, paid }
+      .post(`${process.env.REACT_APP_BACKEND_URL}/api/suppliers/create`, { firstName, lastName, phone, debt, paid }
         , {
           headers: {
             authorization: "Bearer " + localStorage.getItem('token'),

@@ -18,7 +18,7 @@ export const AdminProducts = () => {
     }
 
     const getAllProducts = async () => {
-        await axios.get(`/api/products/get`).then(res => {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products/get`).then(res => {
             if (res.status === 200) {
                 setProducts(res.data);
                 setMainProducts(res.data);

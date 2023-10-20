@@ -51,7 +51,7 @@ export const Order = (props) => {
 
     /************************************************** Cancel Orders ***********************************************/
     const deleteHandler = async (orderId) => {
-        await axios.delete(`/api/orders/order/delete/${orderId}`, {
+        await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/orders/order/delete/${orderId}`, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token')
             }

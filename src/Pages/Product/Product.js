@@ -22,7 +22,7 @@ export const Product = (props) => {
 
     const getProduct = async () => {
         setLoading(true);
-        await axios.get(`/api/products/product/${productId}`).then(res => {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products/product/${productId}`).then(res => {
             setLoading(false);
             if (res.status === 200) {
                 setProduct(res.data);

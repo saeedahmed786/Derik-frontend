@@ -39,7 +39,7 @@ export const Suppliers = () => {
   }, []);
 
   const deleteHandler = async (id) => {
-    await axios.delete(`/api/suppliers/delete/${id}`, {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/suppliers/delete/${id}`, {
       headers: {
         "authorization": 'Bearer ' + localStorage.getItem('token')
       }

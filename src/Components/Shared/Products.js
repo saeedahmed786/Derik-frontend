@@ -8,7 +8,7 @@ import { Error, Success } from '../Messages/messages';
 export const SharedProducts = (props) => {
 
     const deleteHandler = async (id) => {
-        await axios.delete(`/api/products/delete/${id}`, {
+        await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/products/delete/${id}`, {
             headers: {
                 authorization: 'Bearer ' + localStorage.getItem('token')
             }

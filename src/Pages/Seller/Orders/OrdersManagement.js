@@ -14,7 +14,7 @@ export const SellerOrdersManagement = () => {
     const [sort, setSort] = useState("6");
 
     const getAllOrders = async () => {
-        await axios.get(`/api/orders/seller/all-orders`, {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/orders/seller/all-orders`, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token')
             }

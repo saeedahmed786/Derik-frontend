@@ -38,7 +38,7 @@ const productsListReducer = (state = { productsInCart }, action) => {
 export const listProducts = () => async (dispatch) => {
     try {
         dispatch({ type: FETCH_PRODUCTS_REQUEST });
-        const { data } = await axios.get(`/api/cart/get`, {
+        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cart/get`, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token')
             }

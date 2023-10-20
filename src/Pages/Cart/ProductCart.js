@@ -27,7 +27,7 @@ export const ProductCart = (props) => {
 
   const getCartProducts = async () => {
     setLoading(true);
-    await axios.get(`/api/cart/get`, {
+    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cart/get`, {
       headers: {
         'authorization': 'Bearer ' + localStorage.getItem('token')
       }
@@ -50,7 +50,7 @@ export const ProductCart = (props) => {
 
   const getProductById = async (prId) => {
     setLoading(true);
-    axios.get(`/api/cart/get-product`, { params: { userId: userId, productId: prId } }).then(res => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cart/get-product`, { params: { userId: userId, productId: prId } }).then(res => {
       setLoading(false);
       if (res.status === 200) {
         setProduct(res.data);
@@ -65,7 +65,7 @@ export const ProductCart = (props) => {
 
   const getMainProductById = async (prId) => {
     setLoading(true);
-    axios.get(`/api/products/get/${prId}`).then(res => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products/get/${prId}`).then(res => {
       setLoading(false);
       if (res.status === 200) {
         setMainProduct(res.data);
@@ -101,7 +101,7 @@ export const ProductCart = (props) => {
   const dispatch = useDispatch();
 
   const removeHandler = async (cartId) => {
-    await axios.delete(`/api/cart/delete/${cartId}`, {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/cart/delete/${cartId}`, {
       headers: {
         'authorization': 'Bearer ' + localStorage.getItem('token')
       }
@@ -122,7 +122,7 @@ export const ProductCart = (props) => {
     if (qtyToShop > mainProduct?.qty - 1) {
       Error('Product out of stock!')
     } else {
-      await axios.put(`/api/cart/update/qty/${productId}`, { qty: qtyToShop, userId, productId: productId }, {
+      await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/cart/update/qty/${productId}`, { qty: qtyToShop, userId, productId: productId }, {
         headers: {
           'authorization': 'Bearer ' + localStorage.getItem('token')
         }

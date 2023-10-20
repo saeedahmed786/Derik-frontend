@@ -7,7 +7,7 @@ export const ProductsByCategory = ({ category }) => {
     const [products, setProducts] = useState([]);
 
     const getProductsByCategory = async (id) => {
-        await axios.get(`/api/products/cat/${category._id}`).then(res => {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products/cat/${category._id}`).then(res => {
             if (res.status === 200) {
                 setProducts(res.data);
             } else {

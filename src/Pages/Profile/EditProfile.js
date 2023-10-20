@@ -32,7 +32,7 @@ export const EditProfile = () => {
 
     const getUser = async () => {
         setLoading(true);
-        await axios.get(`/api/users/get/${isAuthenticated()._id}`).then(res => {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/get/${isAuthenticated()._id}`).then(res => {
             setLoading(false);
             if (res.status === 200) {
                 setUser(res.data);
@@ -46,7 +46,7 @@ export const EditProfile = () => {
     const submitEditHandler = async (e) => {
         e.preventDefault();
         setLoading(true);
-        await axios.put(`/api/users/update`, user, {
+        await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/users/update`, user, {
             headers: {
                 'authorization': 'Bearer ' + token
             }

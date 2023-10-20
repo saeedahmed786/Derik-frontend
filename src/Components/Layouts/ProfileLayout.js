@@ -9,7 +9,7 @@ export const ProfLayout = (props) => {
   const [user, setUser] = useState({});
 
   const getUser = async() => {
-    await axios.get(`/api/users/get/${isAuthenticated()._id}`).then(res => {
+    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/get/${isAuthenticated()._id}`).then(res => {
         setUser(res.data);
       
       })

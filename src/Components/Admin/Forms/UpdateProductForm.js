@@ -46,7 +46,7 @@ export const UpdateProductForm = (props) => {
     };
 
     const getProductById = async () => {
-        await axios.get(`/api/products/product/${productId}`).then(res => {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products/product/${productId}`).then(res => {
             if (res.status === 200) {
                 setProduct(res.data);
                 setProductPicture(res.data.productPicture?.url);
@@ -84,7 +84,7 @@ export const UpdateProductForm = (props) => {
             if (file) {
                 data.append('file', file);
             }
-            axios.post(`/api/products/update/${productId}`, data, {
+            axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/products/update/${productId}`, data, {
                 headers: {
                     authorization: 'Bearer ' + localStorage.getItem('token')
                 }

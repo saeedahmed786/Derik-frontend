@@ -15,7 +15,7 @@ export const Payment = (props) => {
   const [products, setProducts] = useState([]);
 
   const getCartProducts = async () => {
-    await axios.get(`/api/cart/get`, {
+    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cart/get`, {
       headers: {
         'authorization': 'Bearer ' + localStorage.getItem('token')
       }
@@ -41,7 +41,7 @@ export const Payment = (props) => {
   const totalPrice = products?.reduce((a, b) => a + b.qty * b.price.toString(), 0);
 
   const emptyCart = async () => {
-    await axios.delete(`/api/cart/empty`, {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/cart/empty`, {
       headers: {
         'authorization': 'Bearer ' + localStorage.getItem('token')
       }

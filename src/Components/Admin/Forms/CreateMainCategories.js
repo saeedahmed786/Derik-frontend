@@ -22,7 +22,7 @@ export const CreateMainCategories = (props) => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post(`/api/categories/create`, { name: category }
+      .post(`${process.env.REACT_APP_BACKEND_URL}/api/categories/create`, { name: category }
         , {
           headers: {
             authorization: "Bearer " + localStorage.getItem('token'),

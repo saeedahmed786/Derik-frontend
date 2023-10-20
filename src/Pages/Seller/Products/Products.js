@@ -18,7 +18,7 @@ export const SellerProducts = () => {
     }
 
     const getAllProducts = async () => {
-        await axios.get(`/api/products/seller`, {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products/seller`, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token')
             }

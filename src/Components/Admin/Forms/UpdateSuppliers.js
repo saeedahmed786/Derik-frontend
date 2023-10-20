@@ -30,7 +30,7 @@ export const UpdateSuppliers = ({ supplier, updateFunction }) => {
     console.log('object')
     e.preventDefault();
     setLoading(true);
-    axios.put(`/api/suppliers/update/${supplier?._id}`, { firstName, lastName, phone, debt, paid }, {
+    axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/suppliers/update/${supplier?._id}`, { firstName, lastName, phone, debt, paid }, {
       headers: {
         authorization: "Bearer " + localStorage.getItem('token')
       }

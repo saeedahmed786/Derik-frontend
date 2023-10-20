@@ -13,7 +13,7 @@ export const Orders = () => {
 
     const getAllOrders = async () => {
         setLoading(true);
-        await axios.get(`/api/orders/${user._id}`, {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/orders/${user._id}`, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token')
             }

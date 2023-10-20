@@ -20,7 +20,7 @@ export const AllProducts = () => {
     }
 
     const getAllProducts = async () => {
-        await axios.get(`/api/products/get`).then(res => {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products/get`).then(res => {
             if (res.status === 200) {
                 setProducts(res.data);
                 setMainProducts(res.data);
@@ -31,7 +31,7 @@ export const AllProducts = () => {
     }
 
     const getProductsByCategory = async (id) => {
-        await axios.post(`/api/products/cat/${id}`).then(res => {
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/products/cat/${id}`).then(res => {
             if (res.status === 200) {
                 setProducts(res.data.products);
             } else {
@@ -40,7 +40,7 @@ export const AllProducts = () => {
         })
     }
     const getAllCategories = async () => {
-        await axios.get(`/api/categories/get`).then(res => {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/categories/get`).then(res => {
             if (res.status === 200) {
                 setCategories(res.data);
             } else {

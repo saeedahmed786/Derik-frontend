@@ -26,7 +26,7 @@ export const UpdateCategories = (props) => {
     console.log('object')
     e.preventDefault();
     setLoading(true);
-    axios.put(`/api/categories/update/${props.catId}`, { name }, {
+    axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/categories/update/${props.catId}`, { name }, {
       headers: {
         authorization: "Bearer " + localStorage.getItem('token')
       }

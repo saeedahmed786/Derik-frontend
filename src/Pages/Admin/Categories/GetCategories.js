@@ -30,7 +30,7 @@ export const GetCategories = () => {
   }
 
   const deleteHandler = async (id) => {
-    await axios.delete(`/api/categories/delete/${id}`, {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/categories/delete/${id}`, {
       headers: {
         authorization: 'Bearer ' + localStorage.getItem('token')
       }
