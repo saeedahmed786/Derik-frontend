@@ -90,7 +90,7 @@ export const AdminUsers = () => {
                         </thead>
                         <tbody>
                             {
-                                users.map((user, index) => {
+                                users?.length > 0 && users?.map((user, index) => {
                                     return (
                                         <tr>
                                             <th className='pt-4' scope="row">{index + 1}</th>
