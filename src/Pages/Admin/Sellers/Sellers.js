@@ -5,27 +5,27 @@ import React, { useEffect, useState } from 'react'
 import { Layout } from '../../../Components/Layouts/Layout';
 import { Error, Success } from '../../../Components/Messages/messages';
 
-export const Suppliers = () => {
-  const [suppliers, setSuppliers] = useState([]);
-  const [mainSuppliers, setMainSuppliers] = useState([]);
+export const Sellers = () => {
+  const [Sellers, setSellers] = useState([]);
+  const [mainSellers, setMainSellers] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   const searchHandler = () => {
-    setSuppliers(mainSuppliers?.filter(supp =>
+    setSellers(mainSellers?.filter(supp =>
       supp?.firstName?.toLowerCase().includes(searchText?.toLowerCase()) ||
       supp?.lastName?.toLowerCase().includes(searchText?.toLowerCase())
     ));
   }
 
-  const getAllSuppliers = async () => {
+  const getAllSellers = async () => {
     await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/sellers`, {
       headers: {
         "authorization": 'Bearer ' + localStorage.getItem('token')
       }
     }).then(res => {
       if (res.status === 200) {
-        setSuppliers(res.data);
-        setMainSuppliers(res.data);
+        setSellers(res.data);
+        setMainSellers(res.data);
       } else {
         Error(res.data.errorMessage);
       }
@@ -33,20 +33,20 @@ export const Suppliers = () => {
   }
 
   useEffect(() => {
-    getAllSuppliers()
+    getAllSellers()
     return () => {
     }
   }, []);
 
   const deleteHandler = async (id) => {
-    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/suppliers/delete/${id}`, {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/Sellers/delete/${id}`, {
       headers: {
         "authorization": 'Bearer ' + localStorage.getItem('token')
       }
     }).then(res => {
       if (res.status === 200) {
         Success(res.data.successMessage)
-        getAllSuppliers();
+        getAllSellers();
       } else {
         Error(res.data.errorMessage)
       }
@@ -56,7 +56,7 @@ export const Suppliers = () => {
 
   return (
     <Layout sidebar>
-      <div className='suppliers'>
+      <div className='Sellers'>
         <div className='my-4'>
           <Input size='large' placeholder='Search here' onChange={(e) => setSearchText(e.target.value)} />
           <br />
@@ -77,19 +77,19 @@ export const Suppliers = () => {
             </thead>
             <tbody>
               {
-                suppliers?.length > 0 && suppliers?.map((supplier) => {
+                Sellers?.length > 0 && Sellers?.map((Seller) => {
                   return (
                     <>
-                      <tr key={supplier._id} style={{ borderBottom: '1px solid black' }}>
-                        <th>{supplier?._id}</th>
-                        <th scope="col">{supplier.firstName}</th>
-                        <th scope="col">{supplier.lastName}</th>
-                        <th scope="col">{supplier.email}</th>
-                        <th scope="col">{supplier.phone}</th>
-                        <th scope="col">{supplier.zipCode}</th>
+                      <tr key={Seller._id} style={{ borderBottom: '1px solid black' }}>
+                        <th>{Seller?._id}</th>
+                        <th scope="col">{Seller.firstName}</th>
+                        <th scope="col">{Seller.lastName}</th>
+                        <th scope="col">{Seller.email}</th>
+                        <th scope="col">{Seller.phone}</th>
+                        <th scope="col">{Seller.zipCode}</th>
                         <th>
-                          {/* <button className='btn text-black' style={{ textDecoration: 'none' }}><UpdateSuppliers updateFunction={updateFunction} supplier={supplier} /></button> */}
-                          <button className='btn' onClick={() => deleteHandler(supplier._id)}><DeleteOutlined /></button>
+                          {/* <button className='btn text-black' style={{ textDecoration: 'none' }}><UpdateSellers updateFunction={updateFunction} Seller={Seller} /></button> */}
+                          <button className='btn' onClick={() => deleteHandler(Seller._id)}><DeleteOutlined /></button>
                         </th>
                       </tr>
                     </>

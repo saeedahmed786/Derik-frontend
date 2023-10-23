@@ -15,7 +15,7 @@ export const CreateProductForm = () => {
     const [description, setDescription] = useState('');
     const [categories, setCategories] = useState([]);
     const [cat, setCat] = useState('');
-    const [supplier, setSupplier] = useState('');
+    const [Seller, setSeller] = useState('');
     const [loading, setLoading] = useState(false);
     const [productData, setProductData] = useState({
         title: '',
@@ -60,7 +60,7 @@ export const CreateProductForm = () => {
             data.append('description', description);
             data.append('price', price);
             data.append('qty', qty);
-            data.append('supplier', supplier);
+            data.append('Seller', Seller);
             data.append('category', cat);
             data.append('file', file);
             axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/products/create`, data, {
@@ -139,14 +139,14 @@ export const CreateProductForm = () => {
                                 showSearch
                                 style={{ width: '100%' }}
                                 dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
-                                placeholder="Please select supplier"
+                                placeholder="Please select Seller"
                                 allowClear
                                 treeDefaultExpandAll
-                                onChange={(val) => setSupplier(val)}
+                                onChange={(val) => setSeller(val)}
                                 className='mb-3'
                             >
                                 {
-                                    suppliers.map(supp => {
+                                    Sellers.map(supp => {
                                         return (
                                             <TreeNode value={supp.first_name + supp.last_name} title={supp.first_name + " " + supp.last_name} />
                                         )

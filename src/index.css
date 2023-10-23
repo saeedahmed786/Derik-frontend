@@ -292,6 +292,18 @@ div.rc-virtual-list-holder {
     min-height: 60vh;
 }
 
+@media (max-width: 600px) {
+    .cart>div {
+        margin: 0px auto;
+        width: 100%;
+    }
+
+    .cart>div img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
 .ant-form-item-required {
     margin-right: 40px;
 }

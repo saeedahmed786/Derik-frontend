@@ -24,12 +24,13 @@ import { Login } from './Pages/Auth/Login/Login';
 import { Signup } from './Pages/Auth/Signup/Signup';
 import { Navbar } from './Components/Navbar';
 import { CreateProducts } from './Pages/Admin/Products/CreateProducts';
-import { Suppliers } from './Pages/Admin/Suppliers/Suppliers';
+import { Sellers } from './Pages/Admin/Sellers/Sellers';
 import SellerRoute from './Routes/SellerRoute';
 import { SellerProducts } from './Pages/Seller/Products/Products';
 import { SellerUpdateProduct } from './Pages/Seller/Products/UpdateProduct';
 import { SellerCreateProducts } from './Pages/Seller/Products/CreateProducts';
 import { SellerOrdersManagement } from './Pages/Seller/Orders/OrdersManagement';
+import { AdminUsers } from './Pages/Admin/Users/Users';
 
 const App = () => {
 
@@ -57,7 +58,8 @@ const App = () => {
             <AdminRoute exact path='/admin/products' component={AdminProducts} />
             <AdminRoute exact path='/admin/product/update/:id' component={AdminUpdateProduct} />
             <AdminRoute exact path='/admin/create-products' component={CreateProducts} />
-            <AdminRoute exact path='/admin/suppliers' component={Suppliers} />
+            <AdminRoute exact path='/admin/users' component={AdminUsers} />
+            <AdminRoute exact path='/admin/sellers' component={Sellers} />
             <AdminRoute exact path='/admin/orders' component={OrdersManagement} />
 
             <SellerRoute exact path='/seller/products' component={SellerProducts} />

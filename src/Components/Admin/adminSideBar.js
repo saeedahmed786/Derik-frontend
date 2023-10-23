@@ -16,13 +16,23 @@ export const AdminSideBar = () => {
             >
                 {/* <div><Link to='/' className='logo'>Dêrik-online-shop</Link></div> */}
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['/admin/dashboard']} selectedKeys={[location.pathname]}>
-                    <Menu.Item key="/admin/suppliers">
+                    <Menu.Item key="/admin/users">
                         <div className='sidebar-links'>
                             <div>
                                 <i className="fas fa-store"></i>
                             </div>
                             <div>
-                                <NavLink to='/admin/suppliers'> Suppliers </NavLink>
+                                <NavLink to='/admin/users'> Users </NavLink>
+                            </div>
+                        </div>
+                    </Menu.Item>
+                    <Menu.Item key="/admin/sellers">
+                        <div className='sidebar-links'>
+                            <div>
+                                <i className="fas fa-store"></i>
+                            </div>
+                            <div>
+                                <NavLink to='/admin/sellers'> Sellers </NavLink>
                             </div>
                         </div>
                     </Menu.Item>

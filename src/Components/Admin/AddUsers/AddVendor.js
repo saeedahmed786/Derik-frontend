@@ -38,7 +38,7 @@ export const AddVendor = (props) => {
             await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/signup`, userData).then(res => {
                 setLoading(false);
                 if (res.status === 200) {
-                    Success("Supplier added successfully");
+                    Success("Seller added successfully");
                 }
                 else {
                     Error(res.data.errorMessage);

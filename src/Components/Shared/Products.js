@@ -33,7 +33,7 @@ export const SharedProducts = (props) => {
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
-                            <th scope="col">Supplier</th>
+                            <th scope="col">Seller</th>
                             <th scope="col">Category</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -68,6 +68,7 @@ export const SharedProducts = (props) => {
                                                 <td className='w-25' style={{ wordBreak: 'break-word' }}><div className='para' dangerouslySetInnerHTML={{ __html: product?.description }}></div></td>
                                                 <th scope="col">{product?.price}$</th>
                                                 <th scope="col">{product?.qty <= 1 ? <span className='text-danger'>Out of Stock!</span> : product?.qty}</th>
+                                                <th scope="col">{product?.seller?.firstName} {product?.seller?.lastName}</th>
                                                 <th scope="col">{product?.category?.name}</th>
                                                 <th>
                                                     <Link to={isAuthenticated().role === 1 ? `/admin/product/update/${product?._id}` : `/seller/product/update/${product?._id}`} className='btn' style={{ textDecoration: 'none' }}><EditOutlined /></Link>

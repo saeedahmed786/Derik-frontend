@@ -59,7 +59,7 @@ export const Product = (props) => {
                     image: product.productPicture,
                     qty: qtyToShop,
                     totalQty: product?.qty,
-                    supplier: product?.supplier
+                    Seller: product?.Seller
                 };
                 await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/cart/add-to-cart`, requestData, {
                     headers: {

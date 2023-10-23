@@ -19,7 +19,7 @@ export const UpdateProductForm = (props) => {
     const [categories, setCategories] = useState([]);
     const [mainCat, setMainCat] = useState('');
     const [product, setProduct] = useState({});
-    const [supplier, setSupplier] = useState('');
+    const [Seller, setSeller] = useState('');
     const [loading, setLoading] = useState(false);
     const [productData, setProductData] = useState({
         title: '',
@@ -53,7 +53,7 @@ export const UpdateProductForm = (props) => {
                 setProductData(res.data);
                 setDescription(res.data.description);
                 setMainCat(res.data.category?._id);
-                setSupplier(res.data.supplier);
+                setSeller(res.data.Seller);
             } else {
                 Error(res.data.errorMessage);
             }
@@ -79,12 +79,12 @@ export const UpdateProductForm = (props) => {
             data.append('description', description);
             data.append('price', price);
             data.append('qty', qty);
-            data.append('supplier', supplier);
+            data.append('Seller', Seller);
             data.append('category', mainCat);
             if (file) {
                 data.append('file', file);
             }
-            axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/products/update/${productId}`, data, {
+            axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/products/update/${productId}`, data, {
                 headers: {
                     authorization: 'Bearer ' + localStorage.getItem('token')
                 }
@@ -96,7 +96,7 @@ export const UpdateProductForm = (props) => {
                 else {
                     Error(res.data.errorMessage);
                 }
-            })
+            }).catch(err => console.log(err));
         }
     }
 

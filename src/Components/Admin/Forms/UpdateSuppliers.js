@@ -6,7 +6,7 @@ import { Error, Success } from "../../Messages/messages";
 import Loading from "../../Loading/Loading";
 
 
-export const UpdateSuppliers = ({ supplier, updateFunction }) => {
+export const UpdateSellers = ({ Seller, updateFunction }) => {
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [firstName, setFirstName] = useState('');
@@ -30,7 +30,7 @@ export const UpdateSuppliers = ({ supplier, updateFunction }) => {
     console.log('object')
     e.preventDefault();
     setLoading(true);
-    axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/suppliers/update/${supplier?._id}`, { firstName, lastName, phone, debt, paid }, {
+    axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/Sellers/update/${Seller?._id}`, { firstName, lastName, phone, debt, paid }, {
       headers: {
         authorization: "Bearer " + localStorage.getItem('token')
       }
@@ -48,11 +48,11 @@ export const UpdateSuppliers = ({ supplier, updateFunction }) => {
   };
 
   useEffect(() => {
-    setFirstName(supplier.first_name);
-    setLastName(supplier.last_name);
-    setPhone(supplier.phone);
-    setDebt(supplier.debt);
-    setPaid(supplier.paid);
+    setFirstName(Seller.first_name);
+    setLastName(Seller.last_name);
+    setPhone(Seller.phone);
+    setDebt(Seller.debt);
+    setPaid(Seller.paid);
 
     return () => { 
 
@@ -64,7 +64,7 @@ export const UpdateSuppliers = ({ supplier, updateFunction }) => {
   return (
     <div>
       <a onClick={showModal} className="text-dark"><EditOutlined /></a>
-      <Modal title="Update Supplier" footer={false} visible={isModalVisible} onCancel={handleCancel}>
+      <Modal title="Update Seller" footer={false} visible={isModalVisible} onCancel={handleCancel}>
         {
           loading ?
             <Loading />

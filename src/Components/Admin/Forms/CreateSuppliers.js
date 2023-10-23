@@ -4,7 +4,7 @@ import Modal from "antd/lib/modal/Modal";
 import { Error, Success } from "../../Messages/messages";
 import Loading from "../../Loading/Loading";
 
-export const CreateSuppliers = (props) => {
+export const CreateSellers = (props) => {
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [firstName, setFirstName] = useState('');
@@ -26,7 +26,7 @@ export const CreateSuppliers = (props) => {
     e.preventDefault();
     // setLoading(true);
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/api/suppliers/create`, { firstName, lastName, phone, debt, paid }
+      .post(`${process.env.REACT_APP_BACKEND_URL}/api/Sellers/create`, { firstName, lastName, phone, debt, paid }
         , {
           headers: {
             authorization: "Bearer " + localStorage.getItem('token'),
@@ -46,8 +46,8 @@ export const CreateSuppliers = (props) => {
 
   return (
     <div>
-      <button className='btn px-4 submit-btn btn-outline-dark rounded-pill' onClick={showModal}>Create Supplier</button>
-      <Modal destroyOnClose title="New Supplier" footer={false} visible={isModalVisible} onCancel={handleCancel}>
+      <button className='btn px-4 submit-btn btn-outline-dark rounded-pill' onClick={showModal}>Create Seller</button>
+      <Modal destroyOnClose title="New Seller" footer={false} visible={isModalVisible} onCancel={handleCancel}>
         {
           loading ?
             <Loading />

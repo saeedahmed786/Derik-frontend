@@ -177,10 +177,10 @@ export const ProductCart = (props) => {
                               products?.map(prod => {
                                 return (
                                   <div className='row border mb-4' style={{ padding: '10px', background: 'white', marginLeft: '10px', marginRight: '10px', marginBottom: '10px' }}>
-                                    <div className='col-md-3'>
+                                    <div className='col-3 col-md-3'>
                                       <img src={prod.image?.url} className='pl-2' alt={prod.title} width='121' height='121' />
                                     </div>
-                                    <div className='col-md-4 ml-4'>
+                                    <div className='col-4 ml-4'>
                                       <div>
                                         <h4>{prod.title}</h4>
                                         <p>{prod.subTitle}</p>
@@ -193,7 +193,7 @@ export const ProductCart = (props) => {
                                         </a>
                                       </div>
                                     </div>
-                                    <div className='col-md-4'><span className='fw-bold'>{prod.price * prod.qty}$</span></div>
+                                    <div className='col-3'><span className='fw-bold'>{prod.price * prod.qty}$</span></div>
                                     <div className=''>
                                       <button className='border border-bottom w-100 mt-2' style={{ border: 'none', background: 'white', height: '40px', fontWeight: 'bolder', color: '#696b79' }} onClick={() => removeHandler(prod.productId)}>Remove</button>
                                     </div>
