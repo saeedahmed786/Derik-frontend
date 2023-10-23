@@ -20,7 +20,7 @@ export const AdminUsers = () => {
 
     const getUsers = async () => {
         setLoading(true);
-        await axios.get('/api/users/get', {
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/get`, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token')
             }
@@ -36,7 +36,7 @@ export const AdminUsers = () => {
 
     const deleteHandler = async (userId) => {
         setLoading(true);
-        await axios.delete(`/api/users/delete/${userId}`, {
+        await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/users/delete/${userId}`, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token')
             }
@@ -53,7 +53,7 @@ export const AdminUsers = () => {
 
     const enableHandler = async (userId) => {
         setLoading(true);
-        await axios.delete(`/api/users/enable/${userId}`, {
+        await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/users/enable/${userId}`, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token')
             }
