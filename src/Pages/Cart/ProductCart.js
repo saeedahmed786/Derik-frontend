@@ -167,7 +167,7 @@ export const ProductCart = (props) => {
                         </div>
                       </div>
                     </UserLayout>
-                    :
+                    : 
                     <>
                       <div className='row'>
                         <div className='col-md-8 pr-4'>
@@ -178,7 +178,7 @@ export const ProductCart = (props) => {
                                 return (
                                   <div className='row border mb-4' style={{ padding: '10px', background: 'white', marginLeft: '10px', marginRight: '10px', marginBottom: '10px' }}>
                                     <div className='col-3 col-md-3'>
-                                      <img src={prod.image?.url} className='pl-2' alt={prod.title} width='121' height='121' />
+                                      <img src={prod?.image?.url} className='pl-2' alt={prod.title} width='121' height='121' />
                                     </div>
                                     <div className='col-4 ml-4'>
                                       <div>

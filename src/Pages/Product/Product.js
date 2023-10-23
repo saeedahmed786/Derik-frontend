@@ -56,7 +56,7 @@ export const Product = (props) => {
                     userId,
                     seller: product?.seller,
                     category: product.category,
-                    image: product.productPicture,
+                    image: product.productPicture[0],
                     qty: qtyToShop,
                     totalQty: product?.qty,
                     Seller: product?.Seller
