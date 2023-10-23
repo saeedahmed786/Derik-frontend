@@ -93,10 +93,19 @@ export const Product = (props) => {
                     <>
                         <div className='row product-page'>
                             <div className='col-md-7 px-3'>
-                                <div>
-                                    <img src={product?.productPicture?.url} className="w-100" style={{ maxHeight: "500px" }} alt="..." />
+                                <div className='row'>
+                                    {
+                                        product?.productPicture?.map(pic => {
+                                            return (
+                                                <div className='col-12 col-md-6'>
+                                                    <img src={pic?.url} className="w-100" style={{ height: "500px" }} alt="..." />
+                                                </div>
+                                            )
+                                        })
+                                    }
                                 </div>
                             </div>
+                            {/* </div> */}
                             <div className="col-md-5 mt-2 pl-4">
                                 <div className='ml-3'>
                                     <h4>

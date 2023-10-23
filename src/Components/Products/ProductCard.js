@@ -9,7 +9,7 @@ export const ProductCard = ({ product }) => {
         <Link to={"/product/" + product._id}>
           <img
             src={
-              product && product?.productPicture?.url
+              product && product?.productPicture[0]?.url
             }
             alt={product.title}
             className="w-100"

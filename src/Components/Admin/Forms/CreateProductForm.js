@@ -7,6 +7,7 @@ import { Error, Success, Warning } from "../../Messages/messages";
 import { Link } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
 import { isAuthenticated } from '../../Auth/auth';
+import { DeleteFilled } from "@ant-design/icons";
 
 const { TreeNode } = TreeSelect;
 
@@ -34,8 +35,12 @@ export const CreateProductForm = () => {
     }
 
     const handleImageChange = (e) => {
-        setFile(e.target.files[0])
+        setFile([
+            ...file,
+            e.target.files[0]
+        ])
     }
+
     const onCatChange = value => {
         setCat(value);
     };
@@ -54,7 +59,7 @@ export const CreateProductForm = () => {
             Warning('All fields are required');
         }
         else {
-            setLoading(true);
+            // setLoading(true);
             let data = new FormData();
             data.append('title', title);
             data.append('description', description);
@@ -62,7 +67,9 @@ export const CreateProductForm = () => {
             data.append('qty', qty);
             data.append('Seller', Seller);
             data.append('category', cat);
-            data.append('file', file);
+            for (let pic of file) {
+                data.append('file', pic);
+            }
             axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/products/create`, data, {
                 headers: {
                     authorization: 'Bearer ' + localStorage.getItem('token')
@@ -133,7 +140,21 @@ export const CreateProductForm = () => {
                                 <ReactQuill placeholder="Product Description" theme="snow" value={description} onChange={setDescription} />
                             </div>
                             <div className='my-3'>
-                                <input type="file" accept='image/*' name='file' onChange={handleImageChange} />
+                                <input type="file" accept='image/*' name='file' multiple onChange={handleImageChange} />
+                            </div>
+                            <div className='d-flex my-4 flex-wrap gap-4 align-items-center'>
+                                {
+                                    file?.length > 0 && file?.map(f => {
+                                        return (
+                                            <div style={{ position: "relative" }}>
+                                                <button type='button' style={{ position: "absolute", top: "-10px", right: "-10px", color: "white" }} onClick={() => setFile(prev => prev?.filter(p => p !== f))}>
+                                                    <DeleteFilled />
+                                                </button>
+                                                <img src={URL.createObjectURL(f)} style={{ width: "100px", height: "100px" }} alt="Product" />
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                             {/* <TreeSelect
                                 showSearch

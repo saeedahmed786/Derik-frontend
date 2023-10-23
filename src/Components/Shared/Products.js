@@ -47,11 +47,11 @@ export const SharedProducts = (props) => {
                                             <tr key={product?._id} style={{ borderBottom: '1px solid black' }}>
                                                 <th>{index + 1}</th>
                                                 <th scope="col">{product?.title}</th>
-                                                <th scope="col"><img src={product?.productPicture && product?.productPicture?.url} className='rounded' width='62' height='62' alt='product' /></th>
+                                                <th scope="col"><img src={product?.productPicture && product?.productPicture[0]?.url} className='rounded' width='62' height='62' alt='product' /></th>
                                                 <td className='w-25' style={{ wordBreak: 'break-word' }}><div className='para' dangerouslySetInnerHTML={{ __html: product?.description }}></div></td>
                                                 <th scope="col">{product?.price}$</th>
                                                 <th scope="col"><span className='text-danger'>Out of Stock!</span></th>
-                                                 <th scope="col">{product?.seller?.firstName} {product?.seller?.lastName}</th>
+                                                <th scope="col">{product?.seller?.firstName} {product?.seller?.lastName}</th>
                                                 <th scope="col">{product?.category?.name}</th>
                                                 <th>
                                                     <Link to={isAuthenticated().role === 1 ? `/admin/product/update/${product?._id}` : `/seller/product/update/${product?._id}`} className='btn' style={{ textDecoration: 'none' }}><EditOutlined /></Link>
@@ -65,11 +65,11 @@ export const SharedProducts = (props) => {
                                             <tr key={product?._id} style={{ borderBottom: '1px solid black' }}>
                                                 <th>{index + 1}</th>
                                                 <th scope="col">{product?.title}</th>
-                                                <th scope="col"><img src={product?.productPicture && product?.productPicture?.url} className='rounded' width='62' height='62' alt='product' /></th>
+                                                <th scope="col"><img src={product?.productPicture && product?.productPicture[0]?.url} className='rounded' width='62' height='62' alt='product' /></th>
                                                 <td className='w-25' style={{ wordBreak: 'break-word' }}><div className='para' dangerouslySetInnerHTML={{ __html: product?.description }}></div></td>
                                                 <th scope="col">{product?.price}$</th>
                                                 <th scope="col">{product?.qty <= 1 ? <span className='text-danger'>Out of Stock!</span> : product?.qty}</th>
-                                               <th scope="col">{product?.seller?.firstName} {product?.seller?.lastName}</th>
+                                                <th scope="col">{product?.seller?.firstName} {product?.seller?.lastName}</th>
                                                 <th scope="col">{product?.seller?.firstName} {product?.seller?.lastName}</th>
                                                 <th scope="col">{product?.category?.name}</th>
                                                 <th>
