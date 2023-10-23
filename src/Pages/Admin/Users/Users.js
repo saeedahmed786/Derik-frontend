@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { CheckSquareFilled, DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 import { UserDrawer } from '../../../Components/Admin/Users/Drawer/Drawer';
 import { Layout } from '../../../Components/Layouts/Layout';
 import { Error, Success } from '../../../Components/Messages/messages';
+import { EditUserDrawer } from '../../../Components/Admin/Users/EditDrawer/Drawer';
 
 
 export const AdminUsers = () => {
@@ -51,23 +52,6 @@ export const AdminUsers = () => {
         })
     }
 
-    const enableHandler = async (userId) => {
-        setLoading(true);
-        await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/users/enable/${userId}`, {
-            headers: {
-                'authorization': 'Bearer ' + localStorage.getItem('token')
-            }
-        }).then(res => {
-            setLoading(false);
-            if (res.status === 200) {
-                Success(res.data.successMessage);
-                getUsers();
-            } else {
-                Error(res.data.errorMessage)
-            }
-        })
-    }
-
 
     return (
         <Layout sidebar>
@@ -101,12 +85,8 @@ export const AdminUsers = () => {
                                             <td className='pt-4'>{user.zipCode}</td>
                                             <td className='pt-4'>
                                                 <div className='d-flex align-items-center gap-2'>
-                                                    {
-                                                        user.status && user.status === 'disabled' ?
-                                                            <h6 className='text-danger mb-1 d-flex align-items-center gap-2'>Disabled <CheckSquareFilled className='text-success mb-' onClick={() => { enableHandler(user._id); setSuccess(true); }} style={{ cursor: 'pointer' }} /></h6>
-                                                            :
-                                                            <a onClick={() => { deleteHandler(user._id); setSuccess(true); }}><DeleteOutlined className='mb-2' /></a>
-                                                    }
+                                                    <EditUserDrawer user={user} update={getUsers} />
+                                                    <a onClick={() => { deleteHandler(user._id); setSuccess(true); }}><DeleteOutlined className='mb-2' /></a>
                                                 </div>
                                             </td>
                                         </tr>

@@ -58,7 +58,6 @@ export const EditProfile = () => {
                 Error(res.data.errorMessage);
             }
         });
-
     }
 
 
