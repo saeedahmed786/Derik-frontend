@@ -85,6 +85,7 @@ export const UpdateProductForm = (props) => {
             data.append('qty', qty);
             data.append('Seller', Seller);
             data.append('category', mainCat);
+            data.append('productPicture', productPicture);
             if (file?.length > 0) {
                 for (let pic of file) {
                     data.append('file', pic);

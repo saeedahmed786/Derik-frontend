@@ -61,13 +61,13 @@ export const CreateProductForm = () => {
         else {
             // setLoading(true);
             let data = new FormData();
-            data.append('title', title);
+            data.append('title', title); 
             data.append('description', description);
             data.append('price', price);
             data.append('qty', qty);
-            data.append('Seller', Seller);
-            data.append('category', cat);
-            for (let pic of file) {
+            data.append('Seller', Seller);   
+            data.append('category', cat); 
+            for (let pic of file) { 
                 data.append('file', pic);
             }
             axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/products/create`, data, {
