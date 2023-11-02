@@ -175,7 +175,7 @@ export const Order = (props) => {
                 <div className="row">
                     <div className="col-md-6 my-4">
                         <h6>Full Name:</h6>
-                        <b>{user.fname} {user.lname}</b>
+                        <b>{user.name}</b>
                     </div>
                     <div className="col-md-6 my-4">
                         <h6>Email:</h6>
@@ -183,30 +183,35 @@ export const Order = (props) => {
                     </div>
                 </div>
                 {
-                    data && data.id &&
-                    <div className="row">
-                        <h2>Payment Information:</h2>
-                        <div className="col-md-6 my-4">
-                            <h6>Paid:</h6>
-                            <b><span>True</span></b>
+                    data && data.id ?
+                        <div className="row">
+                            <h2>Payment Information:</h2>
+                            <div className="col-md-6 my-4">
+                                <h6>Paid:</h6>
+                                <b><span>True</span></b>
+                            </div>
+                            <div className="col-md-6 my-4">
+                                <h6>PayerID:</h6>
+                                <b>{data?.payer?.payer_id}</b>
+                            </div>
+                            <div className="col-md-6 my-4">
+                                <h6>Payment ID:</h6>
+                                <b>{data?.id} </b>
+                            </div>
+                            <div className="col-md-6 my-4">
+                                <h6>Amount Paid:</h6>
+                                <b>{data?.purchase_units[0]?.amount?.value}$</b>
+                            </div>
+                            <div className="col-md-6 my-4">
+                                <h6>Email:</h6>
+                                <b>{data?.payer?.email_address}</b>
+                            </div>
                         </div>
-                        <div className="col-md-6 my-4">
-                            <h6>PayerID:</h6>
-                            <b>{data?.payer?.payer_id}</b>
+                        :
+                        <div>
+                            <h6>Payment Type:</h6>
+                            <b>Cash on Delivery </b>
                         </div>
-                        <div className="col-md-6 my-4">
-                            <h6>Payment ID:</h6>
-                            <b>{data?.id} </b>
-                        </div>
-                        <div className="col-md-6 my-4">
-                            <h6>Amount Paid:</h6>
-                            <b>{data?.purchase_units[0]?.amount?.value}$</b>
-                        </div>
-                        <div className="col-md-6 my-4">
-                            <h6>Email:</h6>
-                            <b>{data?.payer?.email_address}</b>
-                        </div>
-                    </div>
                 }
             </Modal>
         </div >
